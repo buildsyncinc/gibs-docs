@@ -4,7 +4,7 @@
 Effective date: February 10, 2026
 Last updated: February 10, 2026
 
-These Terms of Service ("Terms") govern your access to and use of the Gibs API ("Service") provided by Gibbr AB, a Swedish limited company (org.nr pending), ("Company", "we", "us").
+These Terms of Service ("Terms") govern your access to and use of the Gibs API ("Service") provided by Gibbr AB, a Swedish limited company (org.nr 559496-0766), ("Company", "we", "us").
 
 By accessing or using the Service, you agree to be bound by these Terms.
 
