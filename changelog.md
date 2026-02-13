@@ -14,6 +14,19 @@ All notable changes to the Gibs API.
 
 ---
 
+## [0.3.3] - 2026-02-13
+
+### Added
+- API key management — create, list, and revoke named keys from the dashboard
+- Multiple keys per organization (up to 5) with per-key usage tracking
+- Self-service key lifecycle: create for different environments, revoke individually
+
+### Fixed
+- Dashboard stability improvements
+- Infrastructure health check reliability
+
+---
+
 ## [0.3.2] - 2026-02-12
 
 ### Added
