@@ -1,48 +1,60 @@
 # Integration Examples
 
-## Python
+## Python SDK
 
-```python
-import requests
-
-API_KEY = "gbs_live_abc123..."
-BASE_URL = "https://api.gibs.dev"
-
-def classify_ai_system(description: str) -> dict:
-    response = requests.post(
-        f"{BASE_URL}/v1/classify",
-        headers={"Authorization": f"Bearer {API_KEY}"},
-        json={"description": description},
-    )
-    response.raise_for_status()
-    return response.json()
-
-result = classify_ai_system("AI chatbot that helps customers choose insurance products")
-print(f"Risk level: {result['risk_level']}")
-print(f"Sources: {[s['article'] for s in result['sources']]}")
+```bash
+pip install gibs
 ```
 
-## JavaScript / Node.js
+```python
+from gibs import GibsClient
 
-```javascript
-const API_KEY = "gbs_live_abc123...";
+client = GibsClient(api_key="gbs_live_abc123...")
 
-async function checkCompliance(question) {
-  const response = await fetch("https://api.gibs.dev/v1/check", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ question }),
-  });
-  return response.json();
-}
+# Classify an AI system
+result = client.classify("AI chatbot that helps customers choose insurance products")
+print(f"Risk level: {result.risk_level}")
+print(f"Sources: {[s.article_id for s in result.sources]}")
 
-const result = await checkCompliance(
-  "Do I need to disclose that my customer service chatbot is AI-powered?"
-);
-console.log(result.answer);
+# Ask a compliance question (auto-detects regulation)
+answer = client.check("What are the transparency obligations for chatbots?")
+print(answer.answer)
+print(answer.sources)
+```
+
+Async support:
+
+```python
+from gibs import AsyncGibsClient
+
+async with AsyncGibsClient() as client:  # reads GIBS_API_KEY env var
+    result = await client.classify("CV screening tool for recruitment")
+    answer = await client.check("Does GDPR apply to employee monitoring?")
+```
+
+## JavaScript / TypeScript SDK
+
+```bash
+npm install @gibs-dev/sdk
+```
+
+```typescript
+import { GibsClient } from "@gibs-dev/sdk";
+
+const client = new GibsClient({ apiKey: "gbs_live_abc123..." });
+
+// Classify an AI system
+const result = await client.classify({
+  description: "AI chatbot that helps customers choose insurance products",
+});
+console.log(`Risk level: ${result.risk_level}`);
+console.log(`Sources: ${result.sources.map(s => s.article_id)}`);
+
+// Ask a compliance question
+const answer = await client.check({
+  question: "Do I need to disclose that my customer service chatbot is AI-powered?",
+});
+console.log(answer.answer);
 ```
 
 ## CI/CD — GitHub Actions

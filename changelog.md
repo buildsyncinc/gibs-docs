@@ -7,10 +7,23 @@ All notable changes to the Gibs API.
 ## [Unreleased]
 
 ### Coming Soon
-- Python SDK (`pip install gibs`)
-- JavaScript SDK (`npm install @gibs/client`)
 - DORA regulation support (64 articles + 12 delegated acts)
+- Streaming responses for real-time synthesis
 - Webhook notifications for corpus updates
+
+---
+
+## [0.4.1] - 2026-02-15
+
+### Added
+- Python SDK v0.1.1 (`pip install gibs`) — sync + async clients, full type coverage
+- JavaScript SDK v0.1.1 (`npm install @gibs-dev/sdk`) — TypeScript, native fetch, ESM + CJS
+- Multi-regulation routing — questions automatically routed to the correct corpus
+- DORA corpus indexed in staging (64 articles, 12 delegated acts, 1067 chunks)
+
+### Improved
+- Source citations now include relevance scores from reranker
+- Synthesis engine upgraded with stronger scope discipline
 
 ---
 

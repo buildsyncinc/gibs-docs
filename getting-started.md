@@ -10,31 +10,53 @@ Welcome to the Gibs API documentation. Gibs provides AI-powered EU regulatory co
 
 Sign up at [gibs.dev](https://gibs.dev) and create an API key in your dashboard.
 
-### 2. Make Your First Request
+### 2. Install an SDK (optional)
 
+```bash
+pip install gibs          # Python
+npm install @gibs-dev/sdk # JavaScript/TypeScript
+```
+
+### 3. Make Your First Request
+
+{% tabs %}
+{% tab title="Python SDK" %}
+```python
+from gibs import GibsClient
+
+client = GibsClient(api_key="YOUR_API_KEY")
+result = client.classify("AI system that screens CVs for job applications")
+print(result.risk_level)  # "high"
+```
+{% endtab %}
+{% tab title="cURL" %}
 ```bash
 curl -X POST https://api.gibs.dev/v1/classify \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"description": "AI system that screens CVs for job applications"}'
 ```
+{% endtab %}
+{% endtabs %}
 
-### 3. Get Your Response
+### 4. Get Your Response
 
 ```json
 {
   "risk_level": "high",
-  "confidence": 0.7,
+  "confidence": 0.9,
+  "reasoning": "This system is classified as high-risk under Annex III, Area 4(a)...",
   "sources": [
-    {"article": "Article 6", "title": "Classification rules for high-risk AI systems"},
-    {"article": "Annex III", "title": "High-risk AI systems", "point": "4(a)"}
+    {"article_id": "Article 6", "title": "Classification rules for high-risk AI systems", "relevance_score": 0.95},
+    {"article_id": "Annex III", "title": "High-risk AI systems — Area 4: Employment", "relevance_score": 0.91}
   ],
-  "summary": "CV screening AI is classified as high-risk under Article 6(2) and Annex III, point 4(a) — AI systems intended to be used for recruitment or selection of natural persons.",
-  "processing_time_ms": 4300
+  "request_id": "a1b2c3d4-...",
+  "corpus_version": "v1.1.0",
+  "processing_time_ms": 5200
 }
 ```
 
-That's it. No SDK required, no dependencies. Any HTTP client works.
+SDKs are optional — any HTTP client works.
 
 ---
 
@@ -101,5 +123,8 @@ All errors follow a consistent format:
 |------------|----------|--------|
 | EU AI Act (2024/1689) | Full text — 113 articles, 13 annexes, 180 recitals | ✅ Live |
 | GDPR (2016/679) | Full text — 99 articles, 173 recitals | ✅ Live |
+| DORA (2022/2554) | 64 articles + 12 delegated acts | 🔜 Coming soon |
 
-Additional regulations will be announced on our changelog.
+The API auto-detects which regulation a question targets. You can also specify explicitly via the `regulation` parameter.
+
+Additional regulations will be announced on our [changelog](changelog.md).

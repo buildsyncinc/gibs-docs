@@ -72,46 +72,53 @@ curl -X POST https://api.gibs.dev/v1/check \
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
-| `question` | string | Yes | Compliance question in natural language (max 2000 chars) |
-| `regulation` | string | No | Filter to specific regulation: `ai_act`, `gdpr`, or `all` (default: `all`) |
+| `question` | string | Yes | Compliance question in natural language (max 5000 chars) |
+| `regulation` | string | No | Target regulation: `ai_act`, `gdpr`, `dora`, or `both` (default: auto-detected) |
+| `system_context` | object | No | Optional context about your system (e.g. `{"sector": "healthcare"}`) |
 
 ### Response
 
 ```json
 {
   "answer": "Deployers of high-risk AI systems in HR contexts have several obligations under the AI Act...",
+  "confidence": "high",
   "sources": [
     {
-      "article": "Article 26",
+      "article_id": "Article 26",
       "title": "Obligations of deployers of high-risk AI systems",
-      "relevance": 0.95
+      "text_excerpt": "...",
+      "relevance_score": 0.95
     },
     {
-      "article": "Article 14",
+      "article_id": "Article 14",
       "title": "Human oversight",
-      "relevance": 0.88
+      "text_excerpt": "...",
+      "relevance_score": 0.88
     },
     {
-      "article": "Article 9",
-      "title": "Risk management system",
-      "relevance": 0.82
-    },
-    {
-      "article": "GDPR Article 22",
+      "article_id": "GDPR Article 22",
       "title": "Automated individual decision-making",
-      "relevance": 0.78
+      "text_excerpt": "...",
+      "relevance_score": 0.78
     }
   ],
-  "completeness": 0.85,
+  "should_abstain": false,
+  "abstention_reason": null,
+  "request_id": "a1b2c3d4-...",
+  "corpus_version": "v1.1.0",
   "processing_time_ms": 9600
 }
 ```
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `answer` | string | Detailed answer with inline citations |
-| `sources` | array | All cited articles, ranked by relevance |
-| `completeness` | float | 0.0–1.0 estimated completeness of the answer |
+| `answer` | string | Detailed answer with inline article citations |
+| `confidence` | string | `high`, `medium`, or `low` |
+| `sources` | array | Cited articles with relevance scores |
+| `should_abstain` | boolean | `true` if sources don't cover the question |
+| `abstention_reason` | string\|null | Explanation if abstaining |
+| `request_id` | string | Unique request identifier |
+| `corpus_version` | string | Version of the legal corpus used |
 | `processing_time_ms` | int | Server-side processing time |
 
 ### Completeness Score
