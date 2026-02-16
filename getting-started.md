@@ -123,7 +123,7 @@ All errors follow a consistent format:
 |------------|----------|--------|
 | EU AI Act (2024/1689) | Full text — 113 articles, 13 annexes, 180 recitals | ✅ Live |
 | GDPR (2016/679) | Full text — 99 articles, 173 recitals | ✅ Live |
-| DORA (2022/2554) | 64 articles + 12 delegated acts | 🔜 Coming soon |
+| DORA (2022/2554) | 64 articles + 12 delegated acts, 641 chunks | ✅ Live |
 
 The API auto-detects which regulation a question targets. You can also specify explicitly via the `regulation` parameter.
 

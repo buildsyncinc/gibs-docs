@@ -7,8 +7,28 @@ All notable changes to the Gibs API.
 ## [Unreleased]
 
 ### Coming Soon
-- DORA regulation support (64 articles + 12 delegated acts)
-- Streaming responses for real-time synthesis
+- NIS2 regulation support
+- Additional provider evaluation benchmarks
+
+---
+
+## [0.5.0] - 2026-02-16
+
+### Added
+- **DORA regulation support** — Digital Operational Resilience Act: 64 articles + 12 delegated/implementing acts, 641 indexed chunks. Covers ICT risk management, incident reporting, TLPT, third-party oversight
+- **Streaming responses** — `POST /v1/check/stream` for real-time synthesis via Server-Sent Events
+- **MCP server listed** on MCP directories for AI agent discovery
+
+### Improved
+- Question routing — expanded keyword detection for DORA-specific terms (ICT risk, TLPT, financial entities)
+- Evaluation infrastructure — retry on rate limits, configurable delay between requests
+- 90.8% accuracy on 30-question DORA benchmark (96.7% abstention accuracy)
+
+### Corpus
+- AI Act: 836 chunks (113 articles, 13 annexes, 180 recitals)
+- GDPR: 276 chunks (99 articles, 173 recitals)
+- DORA: 641 chunks (64 articles + 12 delegated acts)
+- Total: 1,753 indexed legal chunks across 3 regulations
 
 ---
 

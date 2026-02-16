@@ -148,7 +148,7 @@ curl https://api.gibs.dev/v1/health
   "status": "healthy",
   "version": "0.1.0",
   "corpus_version": "2026-02-09",
-  "regulations": ["ai_act", "gdpr"]
+  "regulations": ["ai_act", "gdpr", "dora"]
 }
 ```
 
