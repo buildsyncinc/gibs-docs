@@ -73,7 +73,7 @@ curl -X POST https://api.gibs.dev/v1/check \
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | `question` | string | Yes | Compliance question in natural language (max 5000 chars) |
-| `regulation` | string | No | Target regulation: `ai_act`, `gdpr`, `dora`, or `both` (default: auto-detected) |
+| `regulation` | string | No | Target regulation: `ai_act`, `gdpr`, `dora`, or `auto` (default: `auto` — detected from question) |
 | `system_context` | object | No | Optional context about your system (e.g. `{"sector": "healthcare"}`) |
 
 ### Response
