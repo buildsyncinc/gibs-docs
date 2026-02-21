@@ -12,6 +12,26 @@ All notable changes to the Gibs API.
 
 ---
 
+## [0.5.1] - 2026-02-21
+
+### Improved
+- Upgraded synthesis engine — 94.5%+ accuracy across all three regulations (200 expert-curated questions)
+- Verification pipeline optimization — reduced latency by skipping redundant checks on well-cited answers
+- DORA corpus fully validated — 50-question benchmark at 94.6% accuracy
+
+### Security
+- MCP server authentication — API key required on all connections
+- Security headers on all API responses (HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy)
+- Constant-time API key comparison
+- Request body size limits on optional fields
+- Rate limiting resilience — in-memory fallback when cache unavailable
+
+### Fixed
+- MCP server disconnect handling — clean shutdown on client disconnection
+- Demo streaming layout stability
+
+---
+
 ## [0.5.0] - 2026-02-16
 
 ### Added
