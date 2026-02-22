@@ -15,16 +15,16 @@ All notable changes to the Gibs API.
 ## [0.5.1] - 2026-02-21
 
 ### Improved
-- Upgraded synthesis engine — 94.5%+ accuracy across all three regulations (200 expert-curated questions)
+- Upgraded synthesis engine — 93%+ accuracy across all three regulations (200+ evaluation questions)
 - Verification pipeline optimization — reduced latency by skipping redundant checks on well-cited answers
-- DORA corpus fully validated — 50-question benchmark at 94.6% accuracy
+- DORA corpus fully validated with expanded evaluation benchmark
 
 ### Security
 - MCP server authentication — API key required on all connections
 - Security headers on all API responses (HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy)
-- Constant-time API key comparison
+- Improved API key validation
 - Request body size limits on optional fields
-- Rate limiting resilience — in-memory fallback when cache unavailable
+- Rate limiting resilience improvements
 
 ### Fixed
 - MCP server disconnect handling — clean shutdown on client disconnection
@@ -35,7 +35,7 @@ All notable changes to the Gibs API.
 ## [0.5.0] - 2026-02-16
 
 ### Added
-- **DORA regulation support** — Digital Operational Resilience Act: 64 articles + 12 delegated/implementing acts, 641 indexed chunks. Covers ICT risk management, incident reporting, TLPT, third-party oversight
+- **DORA regulation support** — Digital Operational Resilience Act: 64 articles + 12 delegated/implementing acts. Covers ICT risk management, incident reporting, TLPT, third-party oversight
 - **Streaming responses** — `POST /v1/check/stream` for real-time synthesis via Server-Sent Events
 - **MCP server listed** on MCP directories for AI agent discovery
 
@@ -45,10 +45,10 @@ All notable changes to the Gibs API.
 - 90.8% accuracy on 30-question DORA benchmark (96.7% abstention accuracy)
 
 ### Corpus
-- AI Act: 836 chunks (113 articles, 13 annexes, 180 recitals)
-- GDPR: 276 chunks (99 articles, 173 recitals)
-- DORA: 641 chunks (64 articles + 12 delegated acts)
-- Total: 1,753 indexed legal chunks across 3 regulations
+- AI Act: 113 articles, 13 annexes, 180 recitals
+- GDPR: 99 articles, 173 recitals
+- DORA: 64 articles + 12 delegated/implementing acts
+- Three fully indexed EU regulations with cross-reference resolution
 
 ---
 
@@ -90,9 +90,9 @@ All notable changes to the Gibs API.
 - Improved multi-corpus query routing
 
 ### Corpus
-- AI Act: 836 chunks (113 articles, 13 annexes, 180 recitals)
-- GDPR: 276 chunks
-- Full metadata enrichment on all chunks
+- AI Act: 113 articles, 13 annexes, 180 recitals
+- GDPR: 99 articles, 173 recitals
+- Full metadata enrichment on all sources
 
 ---
 
@@ -116,8 +116,8 @@ All notable changes to the Gibs API.
 ## [0.3.0] - 2026-02-10
 
 ### Added
-- 90-question expert-curated evaluation benchmark
-- Cross-reference resolution across 3600+ legal references
+- 90-question evaluation benchmark
+- Cross-reference resolution across regulations
 - Multi-pass verification pipeline with completeness checks
 - API key authentication with per-organization rate limiting
 - Stripe integration for subscription management
