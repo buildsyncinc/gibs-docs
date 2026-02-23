@@ -8,6 +8,7 @@ All notable changes to the Gibs API.
 
 ### Added
 - **Structured JSON response mode** — `POST /v1/check` now accepts `response_format: "structured"` to return machine-readable fields: summary, legal basis, requirements, timeline, and cited articles
+- **Confidence score** — `POST /v1/check` now returns a numeric `confidence_score` (0-1) alongside the text confidence level, computed from retrieval quality, citation density, and hedging signals
 - **Public OpenAPI 3.1 spec** — full API schema at `api.gibs.dev/openapi.json` with typed request/response models for SDK and tool integration
 
 ### Improved
