@@ -130,3 +130,17 @@ All errors follow a consistent format:
 The API auto-detects which regulation a question targets. You can also specify explicitly via the `regulation` parameter.
 
 Additional regulations will be announced on our [changelog](changelog.md).
+
+## Corpus Freshness
+
+We monitor the EU Official Journal for amendments, delegated acts, and implementing acts. Our target is to incorporate material changes within 48 hours of publication.
+
+Every API response includes a `corpus_version` field so you can track which version of the legal text was used. The `/v1/health` endpoint reports the current corpus version for each regulation.
+
+| Regulation | Last updated | Monitoring |
+|------------|-------------|------------|
+| EU AI Act | Full text + all published guidance | Active |
+| DORA | Full text + 12 delegated/implementing acts | Active |
+| GDPR | Full text (stable since 2018) | Active |
+
+**Note:** Gibs is an information tool, not a law firm. Always verify critical compliance decisions with qualified legal counsel.
