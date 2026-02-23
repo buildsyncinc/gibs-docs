@@ -4,6 +4,18 @@ All notable changes to the Gibs API.
 
 ---
 
+## [0.5.3] - 2026-02-23
+
+### Added
+- **Structured JSON response mode** — `POST /v1/check` now accepts `response_format: "structured"` to return machine-readable fields: summary, legal basis, requirements, timeline, and cited articles
+- **Public OpenAPI 3.1 spec** — full API schema at `api.gibs.dev/openapi.json` with typed request/response models for SDK and tool integration
+
+### Improved
+- **Faithfulness verification** — verification now checks against all retrieved sources instead of a truncated subset
+- **Completeness checking** — single-aspect questions now run the full completeness pipeline instead of being skipped
+
+---
+
 ## [0.5.2] - 2026-02-22
 
 ### Added
