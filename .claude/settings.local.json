@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c:*)",
+      "Bash(scp:*)",
+      "Bash(ssh:*)",
+      "Bash(nslookup:*)",
+      "Bash(curl:*)",
+      "Bash(vercel project:*)",
+      "Bash(vercel env add:*)",
+      "Bash(vercel env ls:*)",
+      "Bash(sort:*)",
+      "Bash(find:*)",
+      "Bash(python -m pip:*)",
+      "Bash(pip install:*)",
+      "Bash(py -0p:*)",
+      "Bash(py -3.12:*)",
+      "WebFetch(domain:gibs.dev)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "WebSearch",
+      "Bash(git -C \"C:\\\\Users\\\\gibbe\\\\EU\\\\vestio\" remote -v)",
+      "Bash(git -C \"C:\\\\Users\\\\gibbe\\\\EU\\\\vestio\" pull origin main)",
+      "Bash(git -C \"C:\\\\Users\\\\gibbe\\\\EU\\\\vestio\" stash --include-untracked -m \"pre-sync local state\")",
+      "Bash(git -C \"C:\\\\Users\\\\gibbe\\\\EU\\\\vestio\" log --oneline -3)"
+    ]
+  }
+}

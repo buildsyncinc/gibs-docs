@@ -66,6 +66,8 @@ SDKs are optional — any HTTP client works.
 https://api.gibs.dev
 ```
 
+OpenAPI 3.1 spec: [`api.gibs.dev/openapi.json`](https://api.gibs.dev/openapi.json)
+
 ## Authentication
 
 All requests require a Bearer token in the Authorization header:

@@ -80,6 +80,43 @@ Once connected, your AI assistant can use Gibs tools directly:
 >
 > **Assistant:** *[calls gibs.classify]* Your facial recognition system is classified as **high-risk** under Article 6(2) and Annex III, point 1(a). You need to implement: risk management (Art. 9), data governance (Art. 10), human oversight (Art. 14), and register in the EU database (Art. 49).
 
+## Structured Response Mode
+
+Get machine-readable parsed sections instead of plain markdown:
+
+```python
+from gibs import GibsClient
+
+client = GibsClient(api_key="gbs_live_abc123...")
+
+result = client.check(
+    "What are the risk management obligations for high-risk AI?",
+    response_format="structured",
+)
+
+# Numeric confidence for programmatic decisions
+if result.confidence_score >= 0.7:
+    print(f"Requirements ({len(result.structured.requirements)}):")
+    for req in result.structured.requirements:
+        print(f"  - {req}")
+    print(f"\nArticles: {', '.join(result.structured.articles_cited)}")
+else:
+    print("Low confidence — verify with legal counsel")
+```
+
+```typescript
+const result = await client.check({
+  question: "What are the risk management obligations for high-risk AI?",
+  response_format: "structured",
+});
+
+if (result.confidence_score >= 0.7) {
+  console.log(`Summary: ${result.structured.summary}`);
+  console.log(`Requirements: ${result.structured.requirements.length}`);
+  console.log(`Articles: ${result.structured.articles_cited.join(", ")}`);
+}
+```
+
 ## Batch Classification
 
 Classify multiple AI systems in one script — useful for auditing your product registry:
