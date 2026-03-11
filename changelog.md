@@ -4,6 +4,19 @@ All notable changes to the Gibs API.
 
 ---
 
+## [0.5.5] - 2026-03-11
+
+### Added
+- **Monthly usage quotas** — each plan now enforces a monthly request limit (Free: 25, Developer: 500, Team: 5,000, Platform: 50,000). Returns 429 with `X-Quota-Limit` and `X-Quota-Used` headers when exceeded. Counter resets automatically each calendar month.
+
+### Improved
+- **Accuracy** — 93%+ on AI Act, 96%+ on DORA, 96%+ on GDPR, 97%+ on cross-regulation queries (200 evaluation questions). Improved abstention precision for out-of-scope questions (non-EU law, unrelated regulations).
+
+### Security
+- Removed unused configuration field that implied encryption-at-rest capability
+
+---
+
 ## [0.5.4] - 2026-03-02
 
 ### Fixed
