@@ -4,6 +4,17 @@ All notable changes to the Gibs API.
 
 ---
 
+## [0.5.6] - 2026-03-11
+
+### Added
+- **MCP tool expansion** — 3 new tools for AI agent integration: `list_regulations` (discover available regulations and topics), `get_article` (fetch raw article text by regulation and number), `check_regulation_scope` (determine which regulations apply to your company). Total: 6 MCP tools
+- **Article lookup endpoint** — `GET /v1/articles/{regulation}/{article_number}` returns full article text directly from the corpus. No RAG pipeline, single-digit ms latency. Accepts flexible input formats ("5", "Article 5", "Art. 5")
+
+### Improved
+- **MCP tool descriptions** — rewritten for better AI agent discovery. Each tool includes example inputs, detailed parameter docs, and usage hints
+
+---
+
 ## [0.5.5] - 2026-03-11
 
 ### Added
