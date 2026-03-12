@@ -117,6 +117,42 @@ if (result.confidence_score >= 0.7) {
 }
 ```
 
+## GitHub Actions (CI/CD)
+
+Add compliance checks to your deployment pipeline. Blocks PRs that deploy prohibited AI systems.
+
+```yaml
+name: AI Compliance Gate
+on: [pull_request]
+
+jobs:
+  compliance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Classify AI System
+        uses: gibbrdev/gibs-action@v1
+        with:
+          mode: classify
+          api-key: ${{ secrets.GIBS_API_KEY }}
+          description: "Facial recognition system for building access control"
+          data-types: "biometric"
+          sector: "security"
+```
+
+Check compliance questions as part of your pipeline:
+
+```yaml
+      - name: GDPR Check
+        uses: gibbrdev/gibs-action@v1
+        with:
+          mode: check
+          api-key: ${{ secrets.GIBS_API_KEY }}
+          question: "Do we need a DPIA for automated credit scoring?"
+          regulation: gdpr
+```
+
+Full documentation: [github.com/gibbrdev/gibs-action](https://github.com/gibbrdev/gibs-action)
+
 ## Batch Classification
 
 Classify multiple AI systems in one script — useful for auditing your product registry:

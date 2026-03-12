@@ -4,6 +4,18 @@ All notable changes to the Gibs API.
 
 ---
 
+## [0.5.7] - 2026-03-12
+
+### Added
+- **GitHub Action** — classify AI systems and check compliance directly in CI/CD. Blocks deploys on prohibited/high-risk classification. Two modes: `classify` (risk assessment) and `check` (compliance Q&A). Available at [github.com/gibbrdev/gibs-action](https://github.com/gibbrdev/gibs-action)
+- **Usage visibility** — admin endpoint for monitoring API usage across organizations, aggregated by endpoint and regulation
+
+### Improved
+- **Webhook reliability** — idempotent event processing prevents duplicate handling
+- **Data retention** — automatic log cleanup enforced on startup
+
+---
+
 ## [0.5.6] - 2026-03-11
 
 ### Added
